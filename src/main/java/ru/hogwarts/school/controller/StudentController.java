@@ -6,8 +6,10 @@ import org.springframework.web.bind.annotation.*;
 import ru.hogwarts.school.model.Student;
 import ru.hogwarts.school.service.StudentService;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 
 @RestController
 @RequestMapping("/student")
@@ -40,6 +42,18 @@ public class StudentController {
         }
         return ResponseEntity.ok(Collections.emptyList());
     }
+
+    @GetMapping
+    public ResponseEntity<Collection<Student>> findByAgeBetweenMinAndMax(@RequestParam int minAge, @RequestParam int maxAge){
+        List<Student> studentsByAgeBetween = new ArrayList<>();
+        for (Student student : students.values()) {
+            if (student.getAge() >= minAge || student.getAge() <= maxAge) {
+                studentsByAgeBetween.add(student);
+            }
+        }
+        return studentsByAgeBetween;
+    }
+
     @DeleteMapping("{id}")
     public ResponseEntity<Student> deleteStudent(@PathVariable Long id) {
         studentService.deleteStudent(id);
