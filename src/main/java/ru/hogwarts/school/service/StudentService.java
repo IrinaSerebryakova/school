@@ -37,4 +37,16 @@ public class StudentService {
         }
         return studentsByAge;
     }
+
+    public Collection<Student> findByAgeBetweenMinAndMax(int minAge, int maxAge){
+        List<Student> studentsByAgeBetween = new ArrayList<>();
+        for (Student student : students.values()) {
+            if (student.getAge() >= minAge || student.getAge() <= maxAge) {
+                studentsByAgeBetween.add(student);
+            }
+        }
+        return studentsByAgeBetween;
+    }
+
+
 }
