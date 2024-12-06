@@ -23,7 +23,6 @@ public class FacultyController {
     public Faculty createFaculty(@RequestBody Faculty faculty) {
         return facultyService.createFaculty(faculty);
     }
-
     @GetMapping("{id}")
     public ResponseEntity<Faculty> getFacultyById(@PathVariable Long id) {
         Faculty faculty1 = facultyService.getFacultyById(id);
@@ -36,7 +35,7 @@ public class FacultyController {
     @GetMapping
     public ResponseEntity<Collection<Faculty>> getFaculties(@RequestParam(required = false) String color) {
         if (color != null && !color.isBlank()) {
-            return ResponseEntity.ok(facultyService.getByColor(color));
+            return ResponseEntity.ok(facultyService.findByColor(color));
         }
         return ResponseEntity.ok(Collections.emptyList());
     }
@@ -48,8 +47,8 @@ public class FacultyController {
     }
 
     @PutMapping
-    public ResponseEntity<Faculty> updateFaculty(@PathVariable Long id, @RequestBody Faculty faculty) {
-        Faculty faculty2 = facultyService.updateFaculty(id, faculty);
+    public ResponseEntity<Faculty> updateFaculty(@RequestBody Faculty faculty) {
+        Faculty faculty2 = facultyService.updateFaculty(faculty);
         if (faculty2 == null) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }

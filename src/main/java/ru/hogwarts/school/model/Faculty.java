@@ -1,8 +1,16 @@
 package ru.hogwarts.school.model;
 
-import java.util.Objects;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.Objects;
+@Entity(name = "faculties")
 public class Faculty {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
     private String color;
@@ -13,6 +21,9 @@ public class Faculty {
         this.color = color;
     }
 
+    public Faculty(){
+
+    }
     public Long getId() {
         return id;
     }
@@ -29,11 +40,9 @@ public class Faculty {
         this.name = name;
     }
 
-
     public String getColor() {
         return color;
     }
-
     public void setColor(String color) {
         this.color = color;
     }
