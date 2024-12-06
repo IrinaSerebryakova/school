@@ -23,7 +23,6 @@ public class FacultyController {
     public Faculty createFaculty(@RequestBody Faculty faculty) {
         return facultyService.createFaculty(faculty);
     }
-
     @GetMapping("{id}")
     public ResponseEntity<Faculty> getFacultyById(@PathVariable Long id) {
         Faculty faculty1 = facultyService.getFacultyById(id);

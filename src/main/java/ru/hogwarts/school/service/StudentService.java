@@ -29,7 +29,6 @@ public class StudentService {
     public Student updateStudent(Student student) {
         return studentRepository.save(student);
     }
-
     public List<Student> findByAge(int age) {
         return studentRepository.findByAge(age);
     }

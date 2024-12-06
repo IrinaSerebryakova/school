@@ -26,7 +26,6 @@ public class FacultyService {
     public void deleteFaculty(Long id) {
         facultyRepository.deleteById(id);
     }
-
     public List<Faculty> findByColor(String color) {
         return facultyRepository.findByColor(color);
     }
