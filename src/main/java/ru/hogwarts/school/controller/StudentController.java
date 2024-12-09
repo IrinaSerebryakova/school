@@ -37,7 +37,7 @@ public class StudentController {
 
     @GetMapping("/all")
     public ResponseEntity<Collection<Student>> findAllStudents() {
-            return ResponseEntity.ok(studentService.findAll());
+        return ResponseEntity.ok(studentService.findAll());
     }
     @GetMapping
     public ResponseEntity<Collection<Student>> getStudentsByAge(@RequestParam(required = false) int age) {
@@ -68,6 +68,4 @@ public class StudentController {
         }
         return ResponseEntity.ok(student1);
     }
-
-
 }

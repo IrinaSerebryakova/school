@@ -25,13 +25,13 @@ public class StudentService {
     public void deleteStudent(Long id) {
         studentRepository.deleteById(id);
     }
+
     public Student updateStudent(Student student) {
         return studentRepository.save(student);
     }
     public List<Student> findByAge(int age) {
         return studentRepository.findByAge(age);
     }
-
     public List<Student> findByAgeBetween(int minAge, int maxAge) {
         return studentRepository.findByAgeBetween(minAge, maxAge);
     }
@@ -39,6 +39,4 @@ public class StudentService {
     public List<Student> findAll() {
         return studentRepository.findAll();
     }
-
-
 }
