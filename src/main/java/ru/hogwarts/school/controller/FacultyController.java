@@ -32,14 +32,13 @@ public class FacultyController {
         return ResponseEntity.ok(faculty1);
     }
 
-    @GetMapping
+    @GetMapping("/color")
     public ResponseEntity<Collection<Faculty>> getFaculties(@RequestParam(required = false) String color) {
         if (color != null && !color.isBlank()) {
-            return ResponseEntity.ok(facultyService.findByColor(color));
+            return ResponseEntity.ok(facultyService.findByColorIgnoreCase((color)));
         }
         return ResponseEntity.ok(Collections.emptyList());
     }
-
     @DeleteMapping("{id}")
     public ResponseEntity<Faculty> deleteFaculty(@PathVariable Long id) {
         facultyService.deleteFaculty(id);

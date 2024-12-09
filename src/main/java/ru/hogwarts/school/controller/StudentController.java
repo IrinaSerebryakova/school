@@ -37,7 +37,7 @@ public class StudentController {
 
     @GetMapping("/all")
     public ResponseEntity<Collection<Student>> findAllStudents() {
-            return ResponseEntity.ok(studentService.findAll());
+        return ResponseEntity.ok(studentService.findAll());
     }
     @GetMapping
     public ResponseEntity<Collection<Student>> getStudentsByAge(@RequestParam(required = false) int age) {
@@ -46,7 +46,6 @@ public class StudentController {
         }
         return ResponseEntity.ok(Collections.emptyList());
     }
-
     @GetMapping("/age")
     public ResponseEntity<Collection<Student>> findByAgeBetweenMinAndMax(@RequestParam int minAge, @RequestParam int maxAge){
         if (minAge > 0 && maxAge > 0) {
@@ -69,6 +68,4 @@ public class StudentController {
         }
         return ResponseEntity.ok(student1);
     }
-
-
 }

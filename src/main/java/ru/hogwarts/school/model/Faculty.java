@@ -1,13 +1,14 @@
 package ru.hogwarts.school.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import jakarta.persistence.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Objects;
-@Entity(name = "faculties")
+import java.util.Set;
+
+@Entity
+@Table(name = "faculties")
 public class Faculty {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -15,6 +16,9 @@ public class Faculty {
     private String name;
     private String color;
 
+    @OneToMany(mappedBy = "faculty")   //фак-т в отнош.1 к мн-м со студ.,какое поле внутри ст.отвеч.за связь с фак-том
+    @JsonManagedReference
+    private Set<Student> students;
     public Faculty(Long id, String name, String color) {
         this.id = id;
         this.name = name;
